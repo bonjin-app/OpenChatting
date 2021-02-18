@@ -17,7 +17,7 @@ body {
     font-size: 1rem;
     line-height: 1.58;
     color: #333;
-    background-color: #f4f4f4;
+    background-color: #efefef;
     height: 100%;
 }
 
@@ -27,7 +27,7 @@ body:before {
     position: absolute;
     top: 0;
     left: 0;
-    background: #128ff2;
+    background: #000;
     content: "";
     z-index: 0;
 }
@@ -87,19 +87,19 @@ button {
 }
 
 button.default {
-    background-color: #e8e8e8;
+    background-color: #efefef;
     color: #333;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
 }
 
 button.primary {
-    background-color: #128ff2;
+    background-color: #000;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
     color: #fff;
 }
 
 button.accent {
-    background-color: #ff4743;
+    background-color: #000;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
     color: #fff;
 }
@@ -187,12 +187,18 @@ button.accent {
     word-wrap: break-word;
 }
 
-#chat-page .chat-message {
+#chat-page .chat-receive-message {
     padding-left: 68px;
     position: relative;
 }
 
-#chat-page .chat-message i {
+#chat-page .chat-sender-message {
+    padding-right: 68px;
+    text-align: right;
+    position: relative;
+}
+
+#chat-page .chat-receive-message i {
     position: absolute;
     width: 42px;
     height: 42px;
@@ -209,12 +215,31 @@ button.accent {
     text-transform: uppercase;
 }
 
-#chat-page .chat-message span {
+#chat-page .chat-sender-message i {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+    right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    line-height: 42px;
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    font-style: normal;
+    text-transform: uppercase;
+}
+
+#chat-page .chat-sender-message span,
+#chat-page .chat-receive-message span {
     color: #333;
     font-weight: 600;
 }
 
-#chat-page .chat-message p {
+#chat-page .chat-sender-message p,
+#chat-page .chat-receive-message p {
     color: #43464b;
 }
 

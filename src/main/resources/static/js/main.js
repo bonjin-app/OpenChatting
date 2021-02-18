@@ -70,6 +70,8 @@ function sendMessage(event) {
 function onMessageReceived(payload) {
     var message = JSON.parse(payload.body);
 
+    console.log(message);
+
     var messageElement = document.createElement('li');
 
     if(message.type === 'JOIN') {
@@ -81,13 +83,18 @@ function onMessageReceived(payload) {
         message.content = message.sender + '님이 나가셨습니다.';
 
     } else {
-        messageElement.classList.add('chat-message');
+
+        if (message.sender == username) {
+            messageElement.classList.add('chat-sender-message');
+
+        } else {
+            messageElement.classList.add('chat-receive-message');
+        }
 
         var avatarElement = document.createElement('i');
         var avatarText = document.createTextNode(message.sender[0]);
         avatarElement.appendChild(avatarText);
         avatarElement.style['background-color'] = getAvatarColor(message.sender);
-
         messageElement.appendChild(avatarElement);
 
         var usernameElement = document.createElement('span');
@@ -116,5 +123,5 @@ function getAvatarColor(messageSender) {
     return colors[index];
 }
 
-usernameForm.addEventListener('submit', connect, true)
-messageForm.addEventListener('submit', sendMessage, true)
+usernameForm.addEventListener('submit', connect, true);
+messageForm.addEventListener('submit', sendMessage, true);
