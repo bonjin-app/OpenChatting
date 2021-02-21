@@ -1,3 +1,4 @@
+// 전체 스크립트 엄격 모드 구문
 'use strict';
 
 var usernamePage = document.querySelector('#username-page');
@@ -31,7 +32,6 @@ function connect(event) {
     event.preventDefault();
 }
 
-
 function onConnected() {
     // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
@@ -40,17 +40,15 @@ function onConnected() {
     stompClient.send("/app/chat/user",
         {},
         JSON.stringify({sender: username, type: 'JOIN'})
-    )
+    );
 
     connectingElement.classList.add('hidden');
 }
-
 
 function onError(error) {
     connectingElement.textContent = '서버에 연결할 수 없습니다. 다시 시도하려면 페이지를 새로고침하세요.';
     connectingElement.style.color = 'red';
 }
-
 
 function sendMessage(event) {
     var messageContent = messageInput.value.trim();
@@ -62,15 +60,13 @@ function sendMessage(event) {
         };
         stompClient.send("/app/chat/message", {}, JSON.stringify(chatMessage));
         messageInput.value = '';
+        messageInput.focus();
     }
     event.preventDefault();
 }
 
-
 function onMessageReceived(payload) {
     var message = JSON.parse(payload.body);
-
-    console.log(message);
 
     var messageElement = document.createElement('li');
 
@@ -112,7 +108,6 @@ function onMessageReceived(payload) {
     messageArea.appendChild(messageElement);
     messageArea.scrollTop = messageArea.scrollHeight;
 }
-
 
 function getAvatarColor(messageSender) {
     var hash = 0;
