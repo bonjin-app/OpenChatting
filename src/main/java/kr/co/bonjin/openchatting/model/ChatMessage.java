@@ -2,9 +2,9 @@ package kr.co.bonjin.openchatting.model;
 
 public class ChatMessage {
 
-    private MessageType type;
-    private String content;
-    private String sender;
+    private MessageType type;   //타입
+    private String content;     //내용
+    private String sender;      //보낸사람
 
     public MessageType getType() {
         return type;
